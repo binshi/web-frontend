@@ -7,7 +7,7 @@ Written on SublimeText using the following plugins:
 * Bootstrap - For bootstrap - https://github.com/JasonMortonNZ/bs3-sublime-plugin
 * Format HTML, CSS, JSON - https://packagecontrol.io/packages/HTML-CSS-JS%20Prettify
 * JQuery - 
-* 
+* AllAutoComplete - searches all open files to find matches while suggesting words - https://github.com/alienhard/SublimeAllAutocomplete
 
 
 **To autosave on sublime text:**
