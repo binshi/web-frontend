@@ -93,7 +93,7 @@
         <input type="text" id="inputFormEvent">
         <br />
         <br />
-        <img src="1.jpg" id="accident" alt="accident">
+        <img src="1.png" id="accident" alt="accident">
         <div id="jsonData"></div>
         <button type="button" id="getData">Get Data</button>
         <script type="text/javascript">
@@ -162,82 +162,182 @@
             });
 
 
-$("#logo2").click(function() {
+            $("#logo2").click(function() {
+
+                // Get the value stored in an attribute
+                var imgName = $(this).attr("src");
+                $("input[type=text]#yourName").val(imgName);
+
+                // Change the value of an attribute
+                $("#logo2").attr("src", "thumb2.png");
+            });
+
+            // Trigger events on mouseover
+            $("#logo2").mouseover(function() {
+                $("#logo2").attr("src", "ntt-logo-horz.png");
+            });
+
+            // Trigger events on mouseout
+            $("#logo2").mouseout(function() {
+                $("#logo2").attr("src", "ntt-logo.png");
+            });
+
+            // Handle mouseover and mouseout with hover
+            $("h2").hover(function() {
+                // mouseover
+                $("h2").css("color", "green");
+            }, function() {
+                // mouseout
+                $("h2").css("color", "black");
+            });
+
+            // Perform an action on double click
+            $("#logo2").dblclick(function() {
+                $("#logo2").attr("src", "ntt-logo-plastic.png");
+            });
+
+            // Get the document x and y position on click
+            $(document).click(function(e) {
+                $("#mClickXPos").val(e.pageX);
+                $("#mClickYPos").val(e.pageY);
+            });
+
+            // Get the x and y as the mouse moves
+            // Use screenX and screenY to get x and y for the screen
+            $(document).mousemove(function(e) {
+                $("#mMoveXPos").val(e.screenX);
+                $("#mMoveYPos").val(e.screenY);
+            });
+
+            // Show key pressed on the keyboard
+            // You can also use keydown() and keyup()
+            $(document).keypress(function(e) {
+
+                // e.which returns the keycode which we convert into
+                // the key with fromCharCode
+                var keyPressed = String.fromCharCode(e.which)
+                $("#keyPressed").val(keyPressed);
+            });
+
+            // Execute when input loses focus
+            $("#inputFormEvent").blur(function() {
+                $("#formEvent").text("Left Input Element");
+            });
+
+            // Execute when input value changes (Conflicts with blur)
+            $("#inputFormEvent").change(function() {
+                $("#formEvent").text("Input Element Changed");
+            });
+
+            // Execute when input gains focus
+            $("#inputFormEvent").focus(function() {
+                $("#formEvent").text("Input Element Focused");
+            });
+
+            // Execute when input value is selected
+            $("#inputFormEvent").select(function() {
+                $("#formEvent").text("Input Element Selected");
+            });
+
+            function showWhatTouched(e) {
+                alert(e.data.message);
+            }
+
+            var bsMsg = {
+                message: "Best Selling Touched"
+            };
+
+            var teMsg = {
+                message: "Track Events Touched"
+            };
+
+            /*
+            $("#bestSelling").on("mouseover", bsMsg, showWhatTouched);
+
+            $("#trackEvents").on("mouseover", teMsg, showWhatTouched);
+
+            $("#accident").click(function() {
+
+              var image = accidentImgs[focusImg];
+                focusImg++;
+                if (focusImg > 3) {
+                    focusImg = 0;
+                }
+
+                $("#accident").attr("src", image);
+
+            });
+
+            var accidentImgs = ["1.png", "2.png", "3.png", "4.png"];
+
+            var focusImg = 1;
+
+            $("#accident").click(function() {
+                var image = accidentImgs[focusImg];
+                focusImg++;
+                if (focusImg > 3) {
+                    focusImg = 0;
+                }
+
+                $("#accident").attr("src", image);
+
+            });
+            */
+
+            $("#p_one").click(function(event) {
+                $(this).hide();
+            });
+
+            $("#p_two").click(function() {
+                $(this).fadeOut(2000);
+
+                // Redisplay the hidden element
+                // You can also use .toggle(), .show() and .fadeIn()
+                $("#p_one").fadeToggle(2000);
+            });
+
+          // Fade an image to a given opacity
+  $("#logo2").click(function() {
+    $(this).fadeTo('slow', .50);
+  });
  
-    // Get the value stored in an attribute
-    var imgName = $(this).attr("src");
-    $("input[type=text]#yourName").val(imgName);
+  // Target td that contains 'Bonds'
+  $("td:contains('Bonds')").click(function() {
  
-    // Change the value of an attribute
-    $("#logo2").attr("src", "thumb2.png");
+    // Hide row that contains a td that contains 'Bonds'
+    $("tr:has(td:contains('Bonds'))").slideUp(1000);
+  });
+ 
+  // Make the Bonds row reappear
+  // You can also use slideToggle()
+  $("td:contains('Hall')").click(function() {
+    $("tr:has(td:contains('Bonds'))").slideDown(1000);
+  });
+ 
+  // You can create custom animations with animate
+  $("#p_one").click(function() {
+ 
+    // To define left, right, top or bottom the element must
+    // have a position property of relative or absolute
+    $(this).css("position", "relative");
+ 
+    
+    $("#p_one").animate(
+    {
+      left: 300,
+      opacity: .5,
+      'font-size': "22px",
+      width: 300
+    }, 2000, "easeInQuad", function(){alert("All Done");});
   });
 
-// Trigger events on mouseover
-  $("#logo2").mouseover(function() {
-    $("#logo2").attr("src", "ntt-logo-horz.png");
-  });
- 
-  // Trigger events on mouseout
-  $("#logo2").mouseout(function() {
-    $("#logo2").attr("src", "ntt-logo.png");
-  });
- 
-  // Handle mouseover and mouseout with hover
-  $("h2").hover(function() {
-    // mouseover
-    $("h2").css("color", "green");
-  }, function() {
-    // mouseout
-    $("h2").css("color", "black");
-  });
- 
-  // Perform an action on double click
-  $("#logo2").dblclick(function() {
-    $("#logo2").attr("src", "ntt-logo-plastic.png");
-  });
- 
-  // Get the document x and y position on click
-  $(document).click(function(e) {
-    $("#mClickXPos").val(e.pageX);
-    $("#mClickYPos").val(e.pageY);
-  });
- 
-  // Get the x and y as the mouse moves
-  // Use screenX and screenY to get x and y for the screen
-  $(document).mousemove(function(e) {
-    $("#mMoveXPos").val(e.screenX);
-    $("#mMoveYPos").val(e.screenY);
-  });
- 
-  // Show key pressed on the keyboard
-  // You can also use keydown() and keyup()
-  $(document).keypress(function(e){
- 
-    // e.which returns the keycode which we convert into
-    // the key with fromCharCode
-    var keyPressed = String.fromCharCode(e.which)
-    $("#keyPressed").val(keyPressed);
-  });
- 
-  // Execute when input loses focus
-  $("#inputFormEvent").blur(function() {
-    $("#formEvent").text("Left Input Element");
-  });
- 
-  // Execute when input value changes (Conflicts with blur)
-  $("#inputFormEvent").change(function() {
-    $("#formEvent").text("Input Element Changed");
-  });
- 
-  // Execute when input gains focus
-  $("#inputFormEvent").focus(function() {
-    $("#formEvent").text("Input Element Focused");
-  });
- 
-  // Execute when input value is selected
-  $("#inputFormEvent").select(function() {
-    $("#formEvent").text("Input Element Selected");
-  });
+
+
+
+
+
+
+
 
 
 
